@@ -1,10 +1,13 @@
-const express = express();
-const app = express();
+const express = require('express');
+const router = express.Router();
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     try {
         res.json({ message: "Hello" })
-    } catch {}
+    } catch(error) {
+        console.error(error)
+        res.status(500).send("Server error")
+    }
 })
 
-module.exports = app;
+module.exports = router;
